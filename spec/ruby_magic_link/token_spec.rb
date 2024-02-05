@@ -6,7 +6,7 @@ RSpec.describe RubyMagicLink::Token do
       'key' => 'value'
     }
   end
-  let(:token) { 'SjRNTzRUc3dmMTQ4RFAtRXF4LXV1QT09IW5A3gvd4CNcy8ZTb7Gcy1ykSIVJM2wvShvuxF8yg8Zx' }
+  let(:token) { 'SjRNTzRUc3dmMTQ4RFAtRXF4LXV1QT09fG5A3gvd4CNcy8ZTb7Gcy1ykSIVJM2wvShvuxF8yg8Zx' }
 
   before do
     config_stub = instance_double(RubyMagicLink::Configuration)
