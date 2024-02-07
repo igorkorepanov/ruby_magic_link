@@ -1,3 +1,5 @@
+![CI](https://github.com/igorkorepanov/ruby_magic_link/actions/workflows/main.yml/badge.svg)
+
 # RubyMagicLink
 
 RubyMagicLink: A gem crafted for the secure generation of tokens, ensuring the safe transmission of data within your Ruby application. Useful for creating magic links—single-use URLs empowering users to perform actions without a password.
@@ -25,7 +27,7 @@ gem install ruby_magic_link
 ## Usage
 ### Configuration
 
-For Rails applications, create an initializer file in the `config/initializers directory`.
+For Rails applications, create an initializer file in the `config/initializers` directory.
 
 ```ruby
 # config/initializers/ruby_magic_link.rb
