@@ -1,0 +1,1 @@
+require_relative 'lib/ruby_magic_link/tasks'
