@@ -9,44 +9,18 @@ module RubyMagicLink
     DELIMITER = '|'
     ALGORITHM = 'AES-256-CBC'
 
-    class TokenObject
-      def initialize(data)
-        @data = data
-      end
-
-      def valid?
-        !expired?
-      end
-
-      def expired?
-        decoded_data['expires_in'] < Time.now.to_i
-      end
-
-      def payload
-        decoded_data['payload']
-      end
-
-      private
-
-      def decoded_data
-        @decoded_data ||= RubyMagicLink::Token.decode_token(data)
-      end
-
-      attr_reader :data
-    end
-
     module_function
 
     def create(payload, expires_in: nil)
       data = { payload: payload }
-      data[:expires_in] = expires_in if expires_in
+      data[:expires_in] = Time.now.to_i + expires_in if expires_in
       iv = OpenSSL::Random.random_bytes(16)
       str = JSON.generate(data)
       Base64.urlsafe_encode64(Base64.urlsafe_encode64(iv) + DELIMITER + encrypt(str, RubyMagicLink.config.secret_key, iv))
     end
 
     def decode(data)
-      TokenObject.new(data)
+      RubyMagicLink::TokenObject.new(data)
     end
 
     def decode_token(data)

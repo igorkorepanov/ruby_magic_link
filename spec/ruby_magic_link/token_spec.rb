@@ -23,10 +23,12 @@ RSpec.describe RubyMagicLink::Token do
   end
 
   describe '.decode' do
-    let(:vector) { "'\x83\x0E\xE1;0\x7F^<\f\xFF\x84\xAB\x1F\xAE\xB8" }
-    let(:token) { described_class.create(payload, expires_in: Time.now.to_i + 100) }
+    let(:token) { described_class.create(payload, expires_in: 100) }
 
-    before { allow(OpenSSL::Random).to receive(:random_bytes).with(16).and_return(vector) }
+    before do
+      vector = "'\x83\x0E\xE1;0\x7F^<\f\xFF\x84\xAB\x1F\xAE\xB8"
+      allow(OpenSSL::Random).to receive(:random_bytes).with(16).and_return(vector)
+    end
 
     it 'decodes token' do
       token_object = described_class.decode(token)
@@ -35,11 +37,15 @@ RSpec.describe RubyMagicLink::Token do
     end
 
     context 'with expired token' do
-      let(:token) { described_class.create(payload, expires_in: Time.now.to_i - 1) }
+      let(:token) { described_class.create(payload, expires_in: expires_in) }
+      let(:expires_in) { 10000 }
 
       it 'decodes token' do
         token_object = described_class.decode(token)
-        expect(token_object).to be_expired
+        expect(token_object).not_to be_expired
+        Timecop.travel(Time.now + expires_in + 1) do
+          expect(token_object).to be_expired
+        end
       end
     end
   end

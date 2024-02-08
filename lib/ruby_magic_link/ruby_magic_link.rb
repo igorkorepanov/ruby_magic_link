@@ -2,7 +2,7 @@
 
 module RubyMagicLink
   class Configuration
-    attr_accessor :secret_key, :token_expiration
+    attr_accessor :secret_key
   end
 
   class << self
