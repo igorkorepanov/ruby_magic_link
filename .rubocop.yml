@@ -1,0 +1,41 @@
+require:
+  - rubocop-performance
+  - rubocop-rspec
+
+Layout/LineLength:
+  Exclude:
+    - 'spec/**/*'
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/BlockLength:
+  Max: 20
+  ExcludedMethods: [describe, context]
+
+Metrics/MethodLength:
+  Max: 20
+
+Naming/MethodParameterName:
+  AllowedNames:
+    - iv
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 10
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false

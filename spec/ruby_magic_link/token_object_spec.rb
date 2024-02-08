@@ -16,7 +16,7 @@ RSpec.describe RubyMagicLink::TokenObject do
       let(:token) { RubyMagicLink::Token.create(payload) }
 
       it 'creates valid token' do
-        Timecop.travel(Time.local(30000)) do
+        Timecop.travel(Time.local(30_000)) do
           token_object = described_class.new(token)
           expect(token_object).to be_valid
         end
@@ -25,7 +25,7 @@ RSpec.describe RubyMagicLink::TokenObject do
 
     context 'with expired token' do
       let(:token) { RubyMagicLink::Token.create(payload, expires_in: expires_in) }
-      let(:expires_in) { 10000 }
+      let(:expires_in) { 10_000 }
 
       it 'expires after the specified time' do
         token_object = RubyMagicLink::Token.decode(token)
@@ -44,7 +44,7 @@ RSpec.describe RubyMagicLink::TokenObject do
       let(:token) { RubyMagicLink::Token.create(payload) }
 
       it 'creates valid token' do
-        Timecop.travel(Time.local(30000)) do
+        Timecop.travel(Time.local(30_000)) do
           token_object = described_class.new(token)
           expect(token_object).not_to be_expired
         end
@@ -53,7 +53,7 @@ RSpec.describe RubyMagicLink::TokenObject do
 
     context 'with expired token' do
       let(:token) { RubyMagicLink::Token.create(payload, expires_in: expires_in) }
-      let(:expires_in) { 10000 }
+      let(:expires_in) { 10_000 }
 
       it 'expires after the specified time' do
         token_object = RubyMagicLink::Token.decode(token)
