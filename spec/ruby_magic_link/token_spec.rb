@@ -38,7 +38,7 @@ RSpec.describe RubyMagicLink::Token do
 
     context 'with expired token' do
       let(:token) { described_class.create(payload, expires_in: expires_in) }
-      let(:expires_in) { 10000 }
+      let(:expires_in) { 10_000 }
 
       it 'decodes token' do
         token_object = described_class.decode(token)

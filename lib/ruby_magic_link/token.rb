@@ -15,8 +15,8 @@ module RubyMagicLink
       data = { payload: payload }
       data[:expires_in] = Time.now.to_i + expires_in if expires_in
       iv = OpenSSL::Random.random_bytes(16)
-      str = JSON.generate(data)
-      Base64.urlsafe_encode64(Base64.urlsafe_encode64(iv) + DELIMITER + encrypt(str, RubyMagicLink.config.secret_key, iv))
+      encrypted_data = encrypt(JSON.generate(data), RubyMagicLink.config.secret_key, iv)
+      Base64.urlsafe_encode64(Base64.urlsafe_encode64(iv) + DELIMITER + encrypted_data)
     end
 
     def decode(data)
