@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Magic links for ruby web applications'
   s.description = 'Magic links for ruby web applications'
   s.authors     = ['Igor Korepanov']
-  s.email       = 'noemail@example.com'
+  s.email       = 'korepanovigor87@gmail.com'
   s.files       = Dir.glob('{lib}/**/*') + %w[LICENSE.txt README.md]
   s.homepage    = 'https://github.com/igorkorepanov/ruby_magic_link'
   s.license     = 'MIT'
