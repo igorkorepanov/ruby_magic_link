@@ -1,3 +1,4 @@
+[![Gem Version](https://badge.fury.io/rb/ruby_magic_link.svg)](https://badge.fury.io/rb/ruby_magic_link)
 ![CI](https://github.com/igorkorepanov/ruby_magic_link/actions/workflows/main.yml/badge.svg)
 
 # RubyMagicLink
