@@ -20,6 +20,10 @@ RSpec.describe RubyMagicLink::Token do
     before { allow(OpenSSL::Random).to receive(:random_bytes).with(16).and_return(vector) }
 
     it { expect(described_class.create(payload)).to eq token }
+
+    it 'raises an error' do
+      expect { described_class.create(payload, expires_in: 'A') }.to raise_error(StandardError, '`expires_at` must be an Integer')
+    end
   end
 
   describe '.decode' do
