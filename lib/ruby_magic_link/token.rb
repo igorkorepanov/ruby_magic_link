@@ -13,7 +13,11 @@ module RubyMagicLink
 
     def create(payload, expires_in: nil)
       data = { payload: payload }
-      data[:expires_in] = Time.now.to_i + expires_in if expires_in
+      if expires_in
+        raise(StandardError, '`expires_at` must be an Integer') unless expires_in.is_a? Integer
+
+        data[:expires_in] = Time.now.to_i + expires_in
+      end
       iv = OpenSSL::Random.random_bytes(16)
       encrypted_data = encrypt(JSON.generate(data), RubyMagicLink.config.secret_key, iv)
       Base64.urlsafe_encode64(Base64.urlsafe_encode64(iv) + DELIMITER + encrypted_data)
