@@ -1,0 +1,20 @@
+# TypeProf 0.21.9
+
+# Classes
+module RubyMagicLink
+  module Token
+    DELIMITER: String
+    ALGORITHM: String
+
+    def create: (untyped payload, ?expires_in: Integer | nil) -> String
+    def self.create: (untyped payload, ?expires_in: Integer | nil) -> String
+    def decode: (String data) -> RubyMagicLink::TokenObject
+    def self.decode: (String data) -> RubyMagicLink::TokenObject
+    def decode_token: (String data) -> Hash[String, String | Integer]
+    def self.decode_token: (String data) -> Hash[String, String | Integer]
+    def encrypt: (String data, String key, String iv) -> String
+    def self.encrypt: (String data, String key, String iv) -> String
+    def decrypt: (String encrypted_data, String key, String iv) -> String
+    def self.decrypt: (String encrypted_data, String key, String iv) -> String
+  end
+end

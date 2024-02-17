@@ -27,8 +27,8 @@ module RubyMagicLink
       RubyMagicLink::TokenObject.new(data)
     end
 
-    def decode_token(data)
-      raw_iv, data = Base64.urlsafe_decode64(data).split(DELIMITER, 2)
+    def decode_token(token)
+      raw_iv, data = Base64.urlsafe_decode64(token).split(DELIMITER, 2)
       JSON.parse(decrypt(data, RubyMagicLink.config.secret_key, Base64.urlsafe_decode64(raw_iv)))
     end
 

@@ -1,0 +1,11 @@
+# TypeProf 0.21.9
+
+# Classes
+module RubyMagicLink
+  def self.setup: -> void
+  def self.config: -> Configuration
+
+  class Configuration
+    attr_accessor secret_key: String
+  end
+end

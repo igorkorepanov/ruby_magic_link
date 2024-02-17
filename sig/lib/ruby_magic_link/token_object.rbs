@@ -1,0 +1,17 @@
+# TypeProf 0.21.9
+
+# Classes
+module RubyMagicLink
+  class TokenObject
+    @decoded_data: untyped
+
+    def initialize: (String data) -> void
+    def valid?: -> bool
+    def expired?: -> bool
+    def payload: -> untyped
+
+    private
+    def decoded_data: -> Hash[String, String | Integer]
+    attr_reader data: String
+  end
+end
