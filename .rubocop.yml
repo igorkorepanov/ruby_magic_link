@@ -2,6 +2,14 @@ require:
   - rubocop-performance
   - rubocop-rspec
 
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+
+Layout/ExtraSpacing:
+  Exclude:
+    - 'ruby_magic_link.gemspec'
+
 Layout/LineLength:
   Exclude:
     - 'spec/**/*'
@@ -11,9 +19,13 @@ Layout/MultilineMethodCallIndentation:
   Exclude:
     - 'spec/**/*'
 
+Layout/SpaceAroundOperators:
+  Exclude:
+    - 'ruby_magic_link.gemspec'
+
 Metrics/BlockLength:
   Max: 20
-  ExcludedMethods: [describe, context]
+  AllowedMethods: [describe, context]
 
 Metrics/MethodLength:
   Max: 20
