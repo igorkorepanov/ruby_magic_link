@@ -3,15 +3,15 @@
 # Classes
 module RubyMagicLink
   class TokenObject
-    @decoded_data: untyped
+    @decoded_data: Hash[String, String | Integer]
 
     def initialize: (String data) -> void
-    def valid?: -> bool
-    def expired?: -> bool
-    def payload: -> untyped
+    def valid?: () -> bool
+    def expired?: () -> bool
+    def payload: () -> Hash[String, String | Integer]
 
     private
-    def decoded_data: -> Hash[String, String | Integer]
+    def decoded_data: () -> Hash[String, String | Integer]
     attr_reader data: String
   end
 end
